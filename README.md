@@ -107,3 +107,36 @@ gpg --keyserver keyring.debian.org --recv-key 0xBB7576AC
 - http://www.g-loaded.eu/2010/11/01/change-expiration-date-gpg-key/
 
 https://www.debian.org/events/keysigning.pt.html
+
+
+## Git
+
+```bash
+# Someone trying to pass another username and email
+git commit --amend --author="Author Name <email@address.com>" --no-edit
+
+# Signing commits
+git commit -m "some message" -S
+git log --show-signature
+
+git verify-commit
+
+git verify-tag
+```
+
+#### ~/.gitconfig
+```
+[user]
+	email = arthurbdiniz@gmail.com
+	name = Arthur Diniz
+	signingkey = arthurbdiniz@gmail.com
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgSign = true
+
+[init]
+        defaultBranch = main
+```
