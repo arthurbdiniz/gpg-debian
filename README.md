@@ -87,6 +87,17 @@ gpg -d mydata.tar.gpg
 ```
 
 
+## Sign data
+
+```bash
+gpg --output doc.sig --sign doc
+gpg --output doc --decrypt doc.sig
+# or
+gpg --output doc.sig --detach-sig doc
+gpg --verify doc.sig doc
+```
+
+
 ## Send key to remote keyserver
 
 [https://keyring.debian.org](https://keyring.debian.org/)
@@ -115,6 +126,10 @@ https://www.debian.org/events/keysigning.pt.html
 # Someone trying to pass another username and email
 git commit --amend --author="Author Name <email@address.com>" --no-edit
 
+git commit -m "Add something" --no-gpg-sign
+# or
+git commit --amend --no-gpg-sign
+
 # Signing commits
 git commit -m "some message" -S
 git log --show-signature
@@ -125,6 +140,7 @@ git verify-tag
 ```
 
 #### ~/.gitconfig
+
 ```
 [user]
 	email = arthurbdiniz@gmail.com
